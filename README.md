@@ -10,7 +10,7 @@ Help source : https://github.com/monokim/framework_tutorial/tree/master/neat \
 source and credits for cicuit image : https://scalextricdigital.weebly.com/8x4-layouts.html \
 source and credits fro the car image : https://freesvg.org/yellow-car-top-view-remix
 ## Demo:
-[![SC2 Video](img/Capture33.PNG)](https://youtu.be/jd-JJ45a4Nw)
+[![demo Video](img/minia.PNG)](https://youtu.be/jd-JJ45a4Nw)
 
 
 ## The Car :
