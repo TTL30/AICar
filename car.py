@@ -10,8 +10,8 @@ color = (255,255,255,255)
 
 class Car:
     def __init__(self):
-        self.img = pygame.transform.scale(CAR_IMG, (100,100))
-        self.position = [750,650]
+        self.img = pygame.transform.scale(CAR_IMG, (80,80))
+        self.position = [650,345]
         self.speed = 0
         self.angle = 0
         self.sensors = []
@@ -33,8 +33,8 @@ class Car:
             pygame.draw.circle(win, (0,255,0), pos_p, 5)
 
     def update_coll_points(self,deg):
-        long = 40
-        coord = [int(self.center[0] + math.cos(math.radians(360 - (self.angle + deg))) * long), int(self.center[1] + math.sin(math.radians(360 - (self.angle + deg))) * long)]
+        long = 30
+        coord = [int(self.center[0] + math.cos(math.radians(360 - (self.angle + deg))) * long-10), int(self.center[1] + math.sin(math.radians(360 - (self.angle + deg))) * long-10)]
         self.collison_points.append(coord)
 
     def update_sensor(self, angle, circuit):
@@ -96,4 +96,5 @@ class Car:
         return self.alive
 
     def reward(self):
-        return self.dist_parcou / 50.0
+        return self.dist_parcou / 50
+

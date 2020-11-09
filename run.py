@@ -1,17 +1,19 @@
 import pygame, neat
 import sys, os
 from car import Car
-
+from time import sleep
 WIN_WIDTH = 1500
 WIN_HEIGHT = 800
-CIRCUIT_IMG = pygame.image.load("img/map2.png")
+CIRCUIT_IMG = pygame.image.load("img/circuit1.png")
+CIRCUIT_IMG2 = pygame.image.load("img/circuit2.png")
 pygame.init()
-
-
+STAT_FONT = pygame.font.SysFont("comicsans", 50)
+nb_gen = 0
 def nn(genomes, config):
 
     nets = []
     cars = []
+    global nb_gen
 
     for _, g in genomes:
         net = neat.nn.FeedForwardNetwork.create(g, config)
@@ -21,8 +23,10 @@ def nn(genomes, config):
 
     window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
     clock = pygame.time.Clock()
-    circuit = CIRCUIT_IMG
+    generation_font = pygame.font.SysFont("Arial", 70)
 
+    circuit = CIRCUIT_IMG2
+    nb_gen += 1
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -47,13 +51,20 @@ def nn(genomes, config):
             break
 
         window.blit(CIRCUIT_IMG, (0,0))
-
+        
         for car in cars:
             if car.get_status():
                 car.draw(window)
+                if(still_car == 1):
+                    text = STAT_FONT.render("Distance : " + str(car.reward()), 1, (0,255,255))
+                    window.blit(text, (WIN_WIDTH-50-text.get_width(),150))
+        text = STAT_FONT.render("Géneration : " + str(nb_gen), 1, (0,255,255))
+        window.blit(text, (WIN_WIDTH-50-text.get_width(),50))
+        text = STAT_FONT.render("Cars : " + str(still_car), 1, (0,255,255))
+        window.blit(text, (WIN_WIDTH-50-text.get_width(),100))
 
         pygame.display.flip()
-        clock.tick(0)
+        clock.tick(30)
 
 def run(config_path):
     config = neat.config.Config(neat.DefaultGenome,
@@ -74,3 +85,4 @@ if __name__ == "__main__":
     local_dir = os.path.dirname(__file__)
     config_path = os.path.join(local_dir, "config-feedforward.txt")
     run(config_path)
+ 
