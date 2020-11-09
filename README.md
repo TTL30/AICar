@@ -7,10 +7,10 @@
     Documentation for Pygame : https://www.pygame.org/docs/ 
     Help source : https://github.com/monokim/framework_tutorial/tree/master/neat
     
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](img/demo.mp4)
-
-## Demo :
-<a href="img/demo.MP4" title="Link Title"><img src="img/Capture33.PNG" alt="Alternate Text" /></a>
+## Demo:
+<video width="480" height="320" controls="controls">
+  <source src="img/demo.MP4" type="video/mp4">
+</video>
 
 ## The Car :
 ![alt text](img/Capture.PNG)
